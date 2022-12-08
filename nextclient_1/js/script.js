@@ -17,6 +17,7 @@ let enfp = 0;
 let istp = 0;
 let estj = 0;
 let infj = 0;
+
 console.log(esfp);
 const questionArr = [
   {
