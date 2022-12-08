@@ -1,23 +1,40 @@
-let isfp = 0;
-let entp = 0;
-let esfj = 0;
-let intj = 0;
-
-let estp = 0;
-let infp = 0;
-let enfj = 0;
-let istj = 0;
-
-let esfp = 0;
-let intp = 0;
-let isfj = 0;
-let entj = 0;
-
-let enfp = 0;
-let istp = 0;
-let estj = 0;
-let infj = 0;
-
+// const types = {
+//   alpha: {
+//     esfj: 0,
+//     isfp: 0,
+//     entp: 0,
+//     intj: 0,
+//   },
+//   beta: {
+//     estp: 0,
+//     istj: 0,
+//     infp: 0,
+//     enfj: 0,
+//   },
+//   gamma: {
+//     esfp: 0,
+//     isfj: 0,
+//     entj: 0,
+//     intp: 0,
+//   },
+//   delta: {
+//     estj: 0,
+//     istp: 0,
+//     enfp: 0,
+//     infj: 0,
+//   },
+// };
+const types = {
+  alpha: [
+    [sens, extra, ethics, ratio],
+    [sens, intro, ethics, irratio],
+    [int, extra, logic, irratio],
+    [int, intro, logic, irratio],
+  ],
+  beta: [1, 2, 3, 4],
+  gamma: [1, 2, 3, 4],
+  delta: [1, 2, 3, 4],
+};
 console.log(esfp);
 const questionArr = [
   {
@@ -54,46 +71,46 @@ const questionArr = [
   },
 ];
 
-function sens(a) {
-  isfp += a;
-  esfj += a;
-  estp += a;
-  istj += a;
-  esfp += a;
-  isfj += a;
-  istp += a;
-  estj += a;
-}
-function logic(a) {
-  entp += a;
-  intj += a;
-  estp += a;
-  istj += a;
-  intp += a;
-  entj += a;
-  istp += a;
-  estj += a;
-}
-function rationality(a) {
-  esfj += a;
-  intj += a;
-  enfj += a;
-  istj += a;
-  isfj += a;
-  entj += a;
-  estj += a;
-  infj += a;
-}
-function extravertion(a) {
-  esfj += a;
-  entp += a;
-  estp += a;
-  enfj += a;
-  esfp += a;
-  entj += a;
-  enfp += a;
-  estj += a;
-}
+// function sens(a) {
+//   isfp += a;
+//   esfj += a;
+//   estp += a;
+//   istj += a;
+//   esfp += a;
+//   isfj += a;
+//   istp += a;
+//   estj += a;
+// }
+// function logic(a) {
+//   entp += a;
+//   intj += a;
+//   estp += a;
+//   istj += a;
+//   intp += a;
+//   entj += a;
+//   istp += a;
+//   estj += a;
+// }
+// function rationality(a) {
+//   esfj += a;
+//   intj += a;
+//   enfj += a;
+//   istj += a;
+//   isfj += a;
+//   entj += a;
+//   estj += a;
+//   infj += a;
+// }
+// function extravertion(a) {
+//   esfj += a;
+//   entp += a;
+//   estp += a;
+//   enfj += a;
+//   esfp += a;
+//   entj += a;
+//   enfp += a;
+//   estj += a;
+// }
 
 function selectedQuestion(elem) {
   let questionText = document.querySelector(".question");
