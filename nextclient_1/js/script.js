@@ -17,12 +17,14 @@ let enfp = 0;
 let istp = 0;
 let estj = 0;
 let infj = 0;
-
+console.log(esfp);
 const questionArr = [
   {
     text: "Хорошо запоминаете местность, которую посетили? Строения, памятники, объекты вокруг?",
-    yes: sens(1),
-    no: sens(-1),
+    yes: sens,
+    yesParam: 1,
+    no: sens,
+    noParam: -1,
     or: null,
   },
   {
@@ -39,17 +41,18 @@ const questionArr = [
   },
   {
     text: "Предпочитаете с утра наметить список дел, которые нужно выполнить в течение дня?",
-    yes: rationality(-1),
+    yes: rationality,
     no: null,
     or: null,
   },
   {
-    text: "",
-    yes: null,
+    text: "Суете нос в чужие дела?",
+    yes: extravertion,
     no: null,
     or: null,
   },
 ];
+
 function sens(a) {
   isfp += a;
   esfj += a;
@@ -90,15 +93,16 @@ function extravertion(a) {
   enfp += a;
   estj += a;
 }
+
 function selectedQuestion(elem) {
   let questionText = document.querySelector(".question");
   let btnYes = document.querySelector(".btn__yes");
   let btnOr = document.querySelector(".btn__or");
   let btnNo = document.querySelector(".btn__no");
   questionText.textContent = elem.text;
-  console.log(btnYes);
+
   btnYes.addEventListener("click", () => {
-    console.log(questionArr[0].yes);
+    elem.yes(elem.yesParam);
     console.log(esfp);
   });
 }
