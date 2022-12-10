@@ -1,128 +1,191 @@
-// const types = {
-//   alpha: {
-//     esfj: 0,
-//     isfp: 0,
-//     entp: 0,
-//     intj: 0,
-//   },
-//   beta: {
-//     estp: 0,
-//     istj: 0,
-//     infp: 0,
-//     enfj: 0,
-//   },
-//   gamma: {
-//     esfp: 0,
-//     isfj: 0,
-//     entj: 0,
-//     intp: 0,
-//   },
-//   delta: {
-//     estj: 0,
-//     istp: 0,
-//     enfp: 0,
-//     infj: 0,
-//   },
-// };
-const types = {
-  alpha: [
-    [sens, extra, ethics, ratio],
-    [sens, intro, ethics, irratio],
-    [int, extra, logic, irratio],
-    [int, intro, logic, irratio],
-  ],
-  beta: [1, 2, 3, 4],
-  gamma: [1, 2, 3, 4],
-  delta: [1, 2, 3, 4],
-};
-console.log(esfp);
+const ese = 0;
+const sei = 0;
+const ile = 0;
+const lii = 0;
+const sle = 0;
+const lsi = 0;
+const eie = 0;
+const iei = 0;
+const see = 0;
+const esi = 0;
+const lie = 0;
+const ili = 0;
+const lse = 0;
+const sli = 0;
+const iee = 0;
+const eii = 0;
+
+const types = [
+  ["ESFJ", ese],
+  ["ISFP", sei],
+  ["ENTP", ile],
+  ["INTJ", lii],
+  ["ESTP", sle],
+  ["ISTJ", lsi],
+  ["ENFJ", eie],
+  ["INFP", iei],
+  ["ESFP", see],
+  ["ISFJ", esi],
+  ["ENTJ", lie],
+  ["INTP", ili],
+  ["ESTJ", lse],
+  ["ISTP", sli],
+  ["ENFP", iee],
+  ["INFJ", eie],
+];
+let allTypesValueSum = 0;
+
+//Применяет свойства вопроса к типам
+function btnHandler(trait, value) {
+  types.forEach((elem) => {
+    if (elem[0].includes(trait)) {
+      elem[1] += value;
+      localStorage.setItem(elem[0], elem[1]);
+    }
+  });
+  // selectedQuestion(questionArr[4]);
+}
+
 const questionArr = [
   {
     text: "Хорошо запоминаете местность, которую посетили? Строения, памятники, объекты вокруг?",
-    yes: sens,
+    yes: "S",
     yesParam: 1,
-    no: sens,
-    noParam: -1,
     or: null,
+    orParam: null,
+    no: "S",
+    noParam: -1,
   },
   {
     text: "Любите животных? Часто кормите птиц?",
     yes: null,
-    no: null,
+    yesParam: null,
     or: null,
+    orParam: null,
+    no: null,
+    noParam: null,
   },
   {
     text: "С трудом просыпаетесь ранним утром? Испытываете сложности с пробуждением?",
     yes: null,
-    no: null,
+    yesParam: null,
     or: null,
+    orParam: null,
+    no: null,
+    noParam: null,
   },
   {
     text: "Предпочитаете с утра наметить список дел, которые нужно выполнить в течение дня?",
-    yes: rationality,
-    no: null,
+    yes: null,
+    yesParam: null,
     or: null,
+    orParam: null,
+    no: null,
+    noParam: null,
   },
   {
     text: "Суете нос в чужие дела?",
-    yes: extravertion,
-    no: null,
+    yes: "E",
+    yesParam: 1,
     or: null,
+    orParam: null,
+    no: null,
+    noParam: null,
   },
 ];
 
-// function sens(a) {
-//   isfp += a;
-//   esfj += a;
-//   estp += a;
-//   istj += a;
-//   esfp += a;
-//   isfj += a;
-//   istp += a;
-//   estj += a;
-// }
-// function logic(a) {
-//   entp += a;
-//   intj += a;
-//   estp += a;
-//   istj += a;
-//   intp += a;
-//   entj += a;
-//   istp += a;
-//   estj += a;
-// }
-// function rationality(a) {
-//   esfj += a;
-//   intj += a;
-//   enfj += a;
-//   istj += a;
-//   isfj += a;
-//   entj += a;
-//   estj += a;
-//   infj += a;
-// }
-// function extravertion(a) {
-//   esfj += a;
-//   entp += a;
-//   estp += a;
-//   enfj += a;
-//   esfp += a;
-//   entj += a;
-//   enfp += a;
-//   estj += a;
-// }
+//Возвращает случайный элемент из массива
 
+function randomQuestion() {
+  let elem = questionArr.splice(
+    Math.round(Math.random() * questionArr.length - 1),
+    1
+  );
+  console.log(elem);
+  console.log(questionArr);
+  return elem[0];
+}
+
+//Выводит версии на экран
+function showVersion(array) {
+  let li_1 = document.querySelector(".version-1");
+  let li_2 = document.querySelector(".version-2");
+  let li_3 = document.querySelector(".version-3");
+  let li_4 = document.querySelector(".version-4");
+
+  li_1.textContent =
+    array[0].type +
+    "  " +
+    ((100 / allTypesValueSum) * array[0].value).toFixed(1) +
+    "%";
+  li_2.textContent =
+    array[1].type +
+    "  " +
+    ((100 / allTypesValueSum) * array[1].value).toFixed(1) +
+    "%";
+  li_3.textContent =
+    array[2].type +
+    "  " +
+    ((100 / allTypesValueSum) * array[2].value).toFixed(1) +
+    "%";
+  li_4.textContent =
+    array[3].type +
+    "  " +
+    ((100 / allTypesValueSum) * array[3].value).toFixed(1) +
+    "%";
+  localStorage.clear();
+}
+
+//Подключает вопрос и вызывает функцию, записывающую результат
 function selectedQuestion(elem) {
   let questionText = document.querySelector(".question");
   let btnYes = document.querySelector(".btn__yes");
   let btnOr = document.querySelector(".btn__or");
   let btnNo = document.querySelector(".btn__no");
+  if (!questionArr[0]) {
+    let ul = document.querySelector("ul");
+    ul.style.display = "block";
+
+    questionText.textContent = "";
+    const typesArr = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      typesArr.push({
+        type: localStorage.key(i),
+        value: localStorage.getItem(localStorage.key(i)),
+      });
+    }
+    typesArr.sort((a, b) => b.value - a.value);
+
+    typesArr.map((current) => (allTypesValueSum += +current.value));
+    showVersion(typesArr);
+    return;
+  }
+
   questionText.textContent = elem.text;
 
-  btnYes.addEventListener("click", () => {
-    elem.yes(elem.yesParam);
-    console.log(esfp);
-  });
+  btnYes.addEventListener(
+    "click",
+    () => {
+      btnHandler(elem.yes, elem.yesParam);
+      selectedQuestion(randomQuestion());
+    },
+    { once: true }
+  );
+  btnOr.addEventListener(
+    "click",
+    () => {
+      btnHandler(elem.or, elem.orParam);
+      selectedQuestion(randomQuestion());
+    },
+    { once: true }
+  );
+  btnNo.addEventListener(
+    "click",
+    () => {
+      btnHandler(elem.no, elem.noParam);
+      selectedQuestion(randomQuestion());
+    },
+    { once: true }
+  );
 }
-// console.log(questionArr[0].yes);
-selectedQuestion(questionArr[0]);
+selectedQuestion(randomQuestion());
