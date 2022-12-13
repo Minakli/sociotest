@@ -85,6 +85,15 @@ const questionArr = [
   },
   {
     text: "Суете нос в чужие дела?",
+    yes: "P",
+    yesParam: 1,
+    or: null,
+    orParam: null,
+    no: "J",
+    noParam: 1,
+  },
+  {
+    text: "Ваша работоспособность меняется безо всяких видимых причин от упорного трудоголизма до полной лени?",
     yes: "E",
     yesParam: 1,
     or: null,
